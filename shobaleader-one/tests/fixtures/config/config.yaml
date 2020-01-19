@@ -1,0 +1,6 @@
+something:
+  foo: 1
+  bar:
+  - apple
+  - banana
+  - carrot

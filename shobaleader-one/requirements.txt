@@ -7,5 +7,6 @@ pylama-pylint
 pytest
 pytest-cov
 pytest-random-order
+ruamel.yaml
 
 ipdb
