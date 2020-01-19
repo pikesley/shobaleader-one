@@ -41,7 +41,7 @@ class TestLightGrid:  # pylint: disable=W0613
     @patch('lib.conf.config',
            return_value={'panel': {'width': 3, 'height': 3}})
     def test_with_offset_data(self, config):
-        """Test it can take seed data at an abritrary (x, y)."""
+        """Test it can take seed data at an arbitrary (x, y)."""
         data = [
             [1],
             [1]
@@ -52,6 +52,21 @@ class TestLightGrid:  # pylint: disable=W0613
             [0, 0, 0],
             [0, 0, 1],
             [0, 0, 1]
+        ]
+
+    @patch('lib.conf.config',
+           return_value={'panel': {'width': 3, 'height': 3}})
+    def test_with_named_arguments(self, config):
+        """Test it deals correctly with named arguments."""
+        data = [
+            [1, 1, 1]
+        ]
+        grid = LightGrid(data, origin_y=1)
+
+        assert grid == [
+            [0, 0, 0],
+            [1, 1, 1],
+            [0, 0, 0]
         ]
 
     @patch('lib.conf.config',
