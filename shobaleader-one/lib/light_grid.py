@@ -7,9 +7,9 @@ class LightGrid(list):
     # pylint: disable=W0231,W0102
     def __init__(self, data=[[]], origin_x=0, origin_y=0):
         """Construct."""
-        self.config = lib.conf.config()['panel']
-        self.width = self.config['width']
-        self.height = self.config['height']
+        self.config = lib.conf.config()["panel"]
+        self.width = self.config["width"]
+        self.height = self.config["height"]
         self.origin_x = origin_x
         self.origin_y = origin_y
 
@@ -22,8 +22,8 @@ class LightGrid(list):
         """Insert the seed data."""
         for index, _ in enumerate(data):
             row_index = index + self.origin_y
-            self[row_index][self.origin_x:len(data[index])] = data[index]
-            del self[row_index][self.width:]
+            self[row_index][self.origin_x : len(data[index])] = data[index]
+            del self[row_index][self.width :]
 
     @property
     def flattened(self):

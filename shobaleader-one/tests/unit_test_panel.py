@@ -3,8 +3,7 @@ from mock import patch
 from lib.panel import FakePixel, Panel
 
 
-@patch('lib.conf.config',
-       return_value={'panel': {'width': 16, 'height': 4}})
+@patch("lib.conf.config", return_value={"panel": {"width": 16, "height": 4}})
 class TestPanel:  # pylint: disable=W0613
     """Test the Panel."""
 
