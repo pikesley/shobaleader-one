@@ -25,5 +25,7 @@ build-backend = "poetry.masonry.api"
 [tool.coverage.report]
 fail_under = 100
 omit = ["/home/travis/virtualenv/*"]
-
-
+show_missing = true
+skip_covered = true
+exclude_lines = ["nocov"]
+ignore_errors = true
