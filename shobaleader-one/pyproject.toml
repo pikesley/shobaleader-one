@@ -22,3 +22,8 @@ ipdb = "^0.12.3"
 requires = ["poetry>=0.12"]
 build-backend = "poetry.masonry.api"
 
+[tool.coverage.report]
+fail_under = 100
+omit = ["/home/travis/virtualenv/*"]
+
+
