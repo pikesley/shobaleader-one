@@ -27,10 +27,6 @@ class Panel:
         else:
             return FakePixel(self.length)
 
-        # self.current_performer = None
-        # self.current_args = None
-        # self.process = None
-
 
 class FakePixel(list):
     """Fake NeoPixels for testing."""
