@@ -6,11 +6,14 @@ RUN apt-get update && apt-get install -y make rsync
 
 COPY docker-config/bashrc /root/.bashrc
 
-WORKDIR /opt/${PROJECT}
-COPY ${PROJECT}/requirements.txt /opt/${PROJECT}/requirements.txt
-COPY ${PROJECT}/Makefile /opt/${PROJECT}/Makefile
 RUN pip install --upgrade pip
-RUN make install
+RUN pip install poetry
+
+WORKDIR /opt/${PROJECT}
+COPY ${PROJECT}/poetry.lock /opt/${PROJECT}/poetry.lock
+COPY ${PROJECT}/pyproject.toml /opt/${PROJECT}/pyproject.toml
+RUN poetry config virtualenvs.create false
+RUN poetry install
 
 COPY ${PROJECT} /opt/${PROJECT}
 

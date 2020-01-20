@@ -1,8 +1,10 @@
 language: python
+
 python:
 - '3.7'
 
 install:
+- pip install poetry
 - cd shobaleader-one && make install
 
 script:
