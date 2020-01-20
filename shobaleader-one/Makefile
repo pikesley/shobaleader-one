@@ -1,17 +1,26 @@
 PROJECT = $(shell basename $$(pwd))
-all: black test clean
+all: black lint test clean
 
 black:
-	poetry run black .
+	@poetry run black .
+
+lint:
+	@poetry run pylint \
+		--disable all \
+		--enable C0115 \
+		--enable C0116 \
+		--enable E0602 \
+		--enable W0611 \
+		--enable W0612 \
+		lib/ tests/
 
 test:
-	poetry run pytest \
+	@poetry run pytest \
 		--random-order \
 		--cov \
 		-vv \
 		-s \
-		--exitfirst \
-		tests/**test_*.py
+		--exitfirst
 
 install:
 	poetry install
