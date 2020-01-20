@@ -17,10 +17,8 @@ mock = "^3.0.5"
 pytest-random-order = "^1.0.4"
 pytest-cov = "^2.8.1"
 ipdb = "^0.12.3"
-
-[build-system]
-requires = ["poetry>=0.12"]
-build-backend = "poetry.masonry.api"
+pylint = "^2.4.4"
+pylama = "^7.7.1"
 
 [tool.coverage.report]
 fail_under = 100
@@ -29,3 +27,8 @@ show_missing = true
 skip_covered = true
 exclude_lines = ["nocov"]
 ignore_errors = true
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+
