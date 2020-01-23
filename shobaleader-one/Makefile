@@ -1,21 +1,23 @@
 PROJECT = $(shell basename $$(pwd))
-all: black lint test clean
+
+all: isort black lint test clean
 
 black:
-	@poetry run black .
+	poetry run black .
+
+isort:
+	poetry run isort -rc --atomic
 
 lint:
-	@poetry run pylint \
-		--disable all \
-		--enable C0115 \
-		--enable C0116 \
-		--enable E0602 \
-		--enable W0611 \
-		--enable W0612 \
+	poetry run pylint \
+		--disable C0114 \
+		--disable R0201 \
+		--disable R0801 \
+		--disable R0903 \
 		lib/ tests/
 
 test:
-	@poetry run pytest \
+	poetry run pytest \
 		--random-order \
 		--cov \
 		-vv \
@@ -32,4 +34,3 @@ clean:
 push-code: clean
 	rsync -av /opt/${PROJECT} pi@${PIHOST}:
 	scp /opt/${PROJECT}/Makefile.pi pi@${PIHOST}:${PROJECT}/Makefile
-
