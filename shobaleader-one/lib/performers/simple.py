@@ -7,9 +7,8 @@ class SimplePerformer:
     def perform(self):
         """Keep sending frames."""
         data = [[1] * 32] * 8
-        while True:
-            for number in [0, 1]:
-                data = [[number] * 32] * 8
-                grid = LightGrid(data)
-                grid.map({1: [255, 0, 0]})
-                yield grid
+        for number in [0, 1]:
+            data = [[number] * 32] * 8
+            grid = LightGrid(data)
+            grid.map({1: [255, 0, 0]})
+            yield grid
