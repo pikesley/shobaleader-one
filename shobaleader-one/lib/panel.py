@@ -24,12 +24,12 @@ class Panel:
         """We can only have Real Pixels on an Actual Pi."""
         if ARM:
             return NeoPixel(board.D18, self.length, auto_write=False)  # nocov
-        else:
-            return FakePixel(self.length)
 
-        # self.current_performer = None
-        # self.current_args = None
-        # self.process = None
+        return FakePixel(self.length)
+
+    def display(self, light_grid):
+        """Throw some lights up."""
+        self.pixels[0 : self.length] = light_grid.flattened
 
 
 class FakePixel(list):
