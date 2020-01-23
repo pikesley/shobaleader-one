@@ -24,8 +24,8 @@ class Panel:
         """We can only have Real Pixels on an Actual Pi."""
         if ARM:
             return NeoPixel(board.D18, self.length, auto_write=False)  # nocov
-        else:
-            return FakePixel(self.length)
+
+        return FakePixel(self.length)
 
 
 class FakePixel(list):
