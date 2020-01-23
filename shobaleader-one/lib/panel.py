@@ -27,6 +27,10 @@ class Panel:
 
         return FakePixel(self.length)
 
+    def display(self, light_grid):
+        """Throw some lights up."""
+        self.pixels[0 : self.length] = light_grid.flattened
+
 
 class FakePixel(list):
     """Fake NeoPixels for testing."""

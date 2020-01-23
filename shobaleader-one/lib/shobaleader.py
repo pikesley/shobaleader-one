@@ -10,9 +10,8 @@ class Shobaleader:
         self.performer = None
         self.process = None
 
-    # def render(self, performer_class):
-    #     """Put the frames on the panel."""
-    #     self.performer = performer_class()
-    #     for frame in self.performer.perform():
-    #         self.panel.display(frame)
-
+    def render(self, performer_class):
+        """Put the frames on the panel."""
+        self.performer = performer_class()
+        for frame in self.performer.perform():
+            self.panel.display(frame)
