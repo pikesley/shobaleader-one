@@ -11,8 +11,8 @@ class Shobaleader:
         self.performer = None
         self.process = None
 
-    def render(self, performer_class):
+    def render(self, performer_class, **kwargs):
         """Put the frames on the panel."""
         self.performer = performer_class()
-        for frame in self.performer.perform():
+        for frame in self.performer.perform(**kwargs):
             self.panel.display(frame)
