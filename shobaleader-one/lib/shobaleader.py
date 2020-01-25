@@ -1,12 +1,13 @@
 # from multiprocessing import Process
+from lib.panel import Panel
 
 
 class Shobaleader:
     """Orchestrator of the whole thing."""
 
-    def __init__(self, panel):
+    def __init__(self):
         """Construct."""
-        self.panel = panel
+        self.panel = Panel()
         self.performer = None
         self.process = None
 
