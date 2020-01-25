@@ -1,3 +1,6 @@
 
 install:
 	sudo poetry install --no-dev --extras rpi-ws281x
+
+run-api:
+	sudo python shobaserver.py
