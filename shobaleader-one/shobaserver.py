@@ -1,6 +1,7 @@
 from flask import request
 from flask_api import FlaskAPI
 
+from lib.performers.dot import Dot
 from lib.performers.simple import SimplePerformer
 from lib.shobaleader import Shobaleader
 
@@ -8,7 +9,7 @@ app = FlaskAPI(__name__)
 
 leader = Shobaleader()
 
-performer_lookups = {"simple": SimplePerformer}
+performer_lookups = {"simple": SimplePerformer, "dot": Dot}
 
 
 @app.route("/perform/<performer>", methods=["POST", "PATCH"])
@@ -18,7 +19,7 @@ def perform(performer):
     else:
         data = request.get_json()
 
-    leader.render(performer_lookups[performer], **data)
+    leader.run(performer_lookups[performer], **data)
     return {"status": "OK"}
 
 

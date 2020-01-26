@@ -1,4 +1,5 @@
-# from multiprocessing import Process
+from multiprocessing import Process
+
 from lib.panel import Panel
 
 
@@ -8,11 +9,25 @@ class Shobaleader:
     def __init__(self):
         """Construct."""
         self.panel = Panel()
-        self.performer = None
+        self.performer_class = None
+        self.args = None
         self.process = None
 
-    def render(self, performer_class, **kwargs):
+    def render(self):
         """Put the frames on the panel."""
-        self.performer = performer_class()
-        for frame in self.performer.perform(**kwargs):
+        performer = self.performer_class()
+        for frame in performer.perform(**self.args):
             self.panel.display(frame)
+
+    def run(self, performer_class, **kwargs):
+        """Control the process."""
+        if performer_class == self.performer_class and kwargs == self.args:
+            return  # nocov
+
+        self.performer_class = performer_class
+        self.args = kwargs
+        if self.process:
+            self.process.terminate()
+
+        self.process = Process(target=self.render)
+        self.process.start()
