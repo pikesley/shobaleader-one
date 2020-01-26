@@ -30,7 +30,7 @@ rpi_ws281x = ["rpi-ws281x"]
 
 [tool.coverage.report]
 fail_under = 100
-omit = ["/home/travis/virtualenv/*"]
+omit = ["/home/travis/virtualenv/*", "lib/performers/*"]
 exclude_lines = ["nocov", "if __name__ == .__main__.:"]
 show_missing = true
 ignore_errors = true

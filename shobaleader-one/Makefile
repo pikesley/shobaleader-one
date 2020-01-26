@@ -10,6 +10,7 @@ isort:
 
 lint:
 	poetry run pylint \
+		--disable C0103 \
 		--disable C0114 \
 		--disable R0201 \
 		--disable R0801 \
