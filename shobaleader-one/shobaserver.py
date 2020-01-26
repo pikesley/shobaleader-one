@@ -19,7 +19,7 @@ def perform(performer):
     else:
         data = request.get_json()
 
-    leader.render(performer_lookups[performer], **data)
+    leader.run(performer_lookups[performer], **data)
     return {"status": "OK"}
 
 

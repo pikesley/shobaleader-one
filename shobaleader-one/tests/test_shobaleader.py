@@ -13,14 +13,15 @@ class TestShobaleader:
         leader = Shobaleader()
 
         assert not leader.process
-        assert not leader.performer
+        assert not leader.performer_class
 
     def test_rendering(self):
         """Test it renders frames unto the Grid."""
         leader = Shobaleader()
         leader.panel = create_autospec(Panel)
-
-        leader.render(SimplePerformer)
+        leader.performer_class = SimplePerformer
+        leader.args = {}
+        leader.render()
         assert leader.panel.display.mock_calls == [
             call(
                 [
