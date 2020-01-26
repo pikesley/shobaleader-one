@@ -1,7 +1,6 @@
-
 install:
 	sudo poetry config virtualenvs.create false
 	sudo poetry install --no-dev --extras RPi_GPIO --extras rpi_ws281x
 
 run-api:
-	sudo python shobaserver.py
+	sudo poetry run python shobaserver.py

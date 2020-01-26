@@ -36,4 +36,4 @@ push-code: clean
 	scp /opt/${PROJECT}/Makefile.pi pi@${PIHOST}:${PROJECT}/Makefile
 
 run-api:
-	python shobaserver.py
+	poetry run python shobaserver.py
