@@ -1,4 +1,5 @@
 import lib.conf
+from lib.colour_tools import gamma_correct
 
 
 class LightGrid(list):
@@ -25,6 +26,9 @@ class LightGrid(list):
             self[row_index][self.origin_x : len(data[index])] = data[index]
             del self[row_index][self.width :]
 
+    def gamma_correct(self):
+        """Gamma-correct our colours."""
+
     @property
     def flattened(self):
         """Convert to a list, with rows reversed appropriately."""
@@ -43,6 +47,6 @@ class LightGrid(list):
         for i, _ in enumerate(self):
             for j, _ in enumerate(self[i]):
                 try:
-                    self[i][j] = mappings[self[i][j]]
+                    self[i][j] = gamma_correct(mappings[self[i][j]])
                 except KeyError:
                     self[i][j] = [0, 0, 0]
