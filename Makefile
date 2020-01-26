@@ -10,7 +10,8 @@ run:
 	docker run \
 		--volume $(shell pwd)/${PROJECT}:/opt/${PROJECT} \
 		--volume $(shell echo ${HOME})/.ssh:/root/.ssh \
-		--env PIHOST=shobaleader.local \
+		--publish 5000:5000 \
+		--env PIHOST=shoba.local \
 		--interactive \
 		--tty \
 		${ID} \

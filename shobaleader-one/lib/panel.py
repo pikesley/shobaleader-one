@@ -30,6 +30,7 @@ class Panel:
     def display(self, light_grid):
         """Throw some lights up."""
         self.pixels[0 : self.length] = light_grid.flattened
+        self.pixels.show()
 
 
 class FakePixel(list):
@@ -40,3 +41,6 @@ class FakePixel(list):
         self.length = length
         for _ in range(self.length):
             self.append((0, 0, 0))
+
+    def show(self):
+        """Pretend to display the pixeks."""

@@ -10,19 +10,18 @@ class TestShobaleader:
 
     def test_constructor(self):
         """Test it initialises correctly."""
-        panel = create_autospec(Panel)
-        leader = Shobaleader(panel)
+        leader = Shobaleader()
 
         assert not leader.process
         assert not leader.performer
 
     def test_rendering(self):
         """Test it renders frames unto the Grid."""
-        panel = create_autospec(Panel)
-        leader = Shobaleader(panel)
+        leader = Shobaleader()
+        leader.panel = create_autospec(Panel)
 
         leader.render(SimplePerformer)
-        assert panel.display.mock_calls == [
+        assert leader.panel.display.mock_calls == [
             call(
                 [
                     [

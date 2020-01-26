@@ -34,3 +34,6 @@ clean:
 push-code: clean
 	rsync -av /opt/${PROJECT} pi@${PIHOST}:
 	scp /opt/${PROJECT}/Makefile.pi pi@${PIHOST}:${PROJECT}/Makefile
+
+run-api:
+	poetry run python shobaserver.py
