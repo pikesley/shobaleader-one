@@ -6,7 +6,7 @@ black:
 	poetry run black .
 
 isort:
-	poetry run isort -rc --atomic
+	poetry run isort --recursive --atomic
 
 lint:
 	poetry run pylint \
@@ -31,6 +31,7 @@ install:
 clean:
 	@find . -depth -name __pycache__ -exec rm -fr {} \;
 	@find . -depth -name .pytest_cache -exec rm -fr {} \;
+	@find . -depth -name ".coverage.*" -exec rm {} \;
 
 push-code: clean
 	rsync -av /opt/${PROJECT} pi@${PIHOST}:
