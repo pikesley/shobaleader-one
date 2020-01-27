@@ -1,3 +1,18 @@
+def gamma_correct(colour):
+    """Gamma-correct a colour."""
+    return list(map(lambda x: GAMMA[x], colour))
+
+
+def scale_colour(colour, factor):
+    """Scale a colour."""
+    return list(map(lambda x: int(x * factor), colour))
+
+
+def complementary(colour):
+    """Generate `colour`s complementary colour."""
+    return list(map(lambda x: 255 - x, colour))
+
+
 GAMMA = [
     0,
     0,
@@ -256,13 +271,3 @@ GAMMA = [
     252,
     255,
 ]
-
-
-def gamma_correct(colour):
-    """Gamma-correct a colour."""
-    return list(map(lambda x: GAMMA[x], colour))
-
-
-def scale_colour(colour, factor):
-    """Scale a colour."""
-    return list(map(lambda x: int(x * factor), colour))
