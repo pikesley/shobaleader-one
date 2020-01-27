@@ -1,3 +1,5 @@
+from lib.colour_tools import gamma_correct
+from lib.conf import config
 from lib.performers.simple import SimplePerformer
 
 
@@ -14,4 +16,4 @@ class TestSimple:
             results.append(item)
 
         assert results[0] == [[[0, 0, 0]] * 32] * 8
-        assert results[1] == [[[255, 0, 0]] * 32] * 8
+        assert results[1] == [[gamma_correct(config()["colours"]["orange"])] * 32] * 8

@@ -1,3 +1,6 @@
 panel:
   width: 32
   height: 8
+
+colours:
+  orange: [250, 129, 0]
