@@ -33,6 +33,16 @@ class TestLightGrid:  # pylint: disable=W0613
         assert grid == [[0, 0, 0], [0, 0, 1], [0, 0, 1]]
 
     @patch("lib.conf.config", return_value={"panel": {"width": 3, "height": 3}})
+    def test_with_negative_seeding(self, config):
+        """Test it can take seed data at an arbitrary (x, y)."""
+        data = [[1, 1], [1, 1]]
+        cases = ((-1, 0, [[1, 0, 0], [1, 0, 0], [0, 0, 0]]),)
+        for origin_x, origin_y, expected in cases:
+            grid = LightGrid(data, origin_x=origin_x, origin_y=origin_y)
+
+            assert grid == expected
+
+    @patch("lib.conf.config", return_value={"panel": {"width": 3, "height": 3}})
     def test_with_named_arguments(self, config):
         """Test it deals correctly with named arguments."""
         data = [[1, 1, 1]]
