@@ -2,6 +2,7 @@ from flask import request
 from flask_api import FlaskAPI
 
 from lib.performers.dot import Dot
+from lib.performers.marquee import Marquee
 from lib.performers.simple import SimplePerformer
 from lib.shobaleader import Shobaleader
 
@@ -9,7 +10,7 @@ app = FlaskAPI(__name__)
 
 leader = Shobaleader()
 
-performer_lookups = {"simple": SimplePerformer, "dot": Dot}
+performer_lookups = {"dot": Dot, "marquee": Marquee, "simple": SimplePerformer}
 
 
 @app.route("/perform/<performer>", methods=["POST", "PATCH"])
