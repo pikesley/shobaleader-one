@@ -18,4 +18,5 @@ class SimplePerformer(Performer):
         for number in [0, 1]:
             data = [[number] * config()["panel"]["width"]] * config()["panel"]["height"]
             grid = LightGrid(data)
+            grid.map({1: self.colour})
             yield grid
