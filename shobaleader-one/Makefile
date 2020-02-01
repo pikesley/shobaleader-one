@@ -25,6 +25,7 @@ test:
 		--cov \
 		-vv \
 		-s \
+		--failed-first \
 		--exitfirst
 
 install:
