@@ -21,6 +21,10 @@ class LightGrid(list):
 
     def seed(self, data):
         """Insert the seed data."""
+        if self.origin_x < 0:
+            data = list(map(lambda x: x[self.origin_x + len(x) :], data))
+            self.origin_x = 0
+
         for index, _ in enumerate(data):
             row_index = index + self.origin_y
             self[row_index][self.origin_x : len(data[index])] = data[index]

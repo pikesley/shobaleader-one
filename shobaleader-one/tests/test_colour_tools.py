@@ -1,4 +1,4 @@
-from lib.colour_tools import complementary, gamma_correct, scale_colour
+from lib.colour_tools import complementary, drift, gamma_correct, scale_colour
 
 
 def test_gamma():
@@ -30,3 +30,15 @@ def test_complementy():
 
     for colour, expected in cases:
         assert complementary(colour) == expected
+
+
+def test_drift():
+    """Test the random colour-drifter."""
+    colour = [255, 255, 255]
+    assert sorted(drift(colour)) == [247, 255, 255]
+
+    colour = [32, 32, 32]
+    assert sorted(drift(colour)) == [32, 32, 40]
+
+    colour = [0, 0, 0]
+    assert sorted(drift(colour)) == [0, 0, 8]

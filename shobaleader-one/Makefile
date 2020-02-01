@@ -1,4 +1,5 @@
 PROJECT = $(shell basename $$(pwd))
+PIHOST = shobaleader.local
 
 all: isort black lint test clean
 
@@ -12,9 +13,13 @@ lint:
 	poetry run pylint \
 		--disable C0103 \
 		--disable C0114 \
+		--disable C0330 \
+		--disable E1101 \
+		--disable E0203 \
 		--disable R0201 \
 		--disable R0801 \
 		--disable R0903 \
+		--disable W0201 \
 		lib/ tests/
 
 test:
@@ -23,6 +28,7 @@ test:
 		--cov \
 		-vv \
 		-s \
+		--failed-first \
 		--exitfirst
 
 install:
