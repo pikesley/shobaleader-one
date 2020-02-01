@@ -26,8 +26,12 @@ class Shobaleader:
 
         self.performer_class = performer_class
         self.args = kwargs
-        if self.process:
-            self.process.terminate()
+        self.stop()
 
         self.process = Process(target=self.render)
         self.process.start()
+
+    def stop(self):
+        """Stop the running process."""
+        if self.process:
+            self.process.terminate()

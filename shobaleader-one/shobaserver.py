@@ -1,6 +1,8 @@
 from flask import request
 from flask_api import FlaskAPI
 
+from lib.light_grid import LightGrid
+from lib.panel import Panel
 from lib.performers.dot import Dot
 from lib.performers.marquee import Marquee
 from lib.performers.simple import SimplePerformer
@@ -21,6 +23,21 @@ def perform(performer):
         data = request.get_json()
 
     leader.run(performer_lookups[performer], **data)
+    return {"status": "OK"}
+
+
+@app.route("/matrix", methods=["POST", "PATCH"])
+def matrix():
+    if not request.content_length:
+        return {"error": "No data"}, 422
+
+    data = request.get_json()
+    if not "matrix" in data:
+        return {"error": "Bad data"}, 422
+
+    grid = LightGrid(data["matrix"])
+    leader.stop()
+    leader.panel.display(grid)
     return {"status": "OK"}
 
 
