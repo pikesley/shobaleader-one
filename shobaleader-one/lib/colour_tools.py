@@ -1,3 +1,6 @@
+from random import choice, randint
+
+
 def gamma_correct(colour):
     """Gamma-correct a colour."""
     return list(map(lambda x: GAMMA[x], colour))
@@ -11,6 +14,22 @@ def scale_colour(colour, factor):
 def complementary(colour):
     """Generate `colour`s complementary colour."""
     return list(map(lambda x: 255 - x, colour))
+
+
+def drift(colour, amount=8, lower_bound=96):
+    """Drift one component of a colour up or down."""
+    index = randint(0, 2)
+    component = colour[index]
+    addend = choice([amount, -amount])
+    if component <= 0:
+        addend = amount
+    if component >= 255 - amount:
+        addend = -amount
+    if sum(colour) <= lower_bound:
+        addend = amount
+
+    colour[index] = component + addend
+    return colour
 
 
 GAMMA = [
