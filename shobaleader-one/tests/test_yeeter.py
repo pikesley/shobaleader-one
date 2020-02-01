@@ -13,3 +13,16 @@ def test_yeeting():
 
     for yeetee_width, grid_width, expected in cases:
         assert yeet(yeetee_width, grid_width) == expected
+
+
+def test_reverse_yeeting():
+    """Test we can go the other way."""
+    cases = (
+        (1, 1, [(0, 0)]),
+        (1, 2, [(0, 0), (0, 1)]),
+        (2, 2, [(1, 0), (0, 0), (0, 1)]),
+        (3, 5, [(2, 0), (1, 0), (0, 0), (0, 1), (0, 2), (0, 3), (0, 4)]),
+    )
+
+    for yeetee_width, grid_width, expected in cases:
+        assert yeet(yeetee_width, grid_width, enter_from="left") == expected
