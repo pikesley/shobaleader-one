@@ -21,9 +21,7 @@ class Dot(Performer):
         y = randint(0, config()["panel"]["height"] - 3)
         data = [[1, 1, 1], [1, 2, 1], [1, 1, 1]]
         grid = LightGrid(data, origin_x=x, origin_y=y)
-        grid.map(
-            {1: self.colour, 2: complementary(self.colour)}  # pylint:disable=E1101
-        )
+        grid.map({1: self.colour, 2: complementary(self.colour)})
 
         return grid
 

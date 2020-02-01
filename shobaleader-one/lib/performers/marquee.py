@@ -14,7 +14,6 @@ class Marquee(Performer):
         self.defaults = {"colour": [255, 0, 0]}
         self.apply_defaults()
         self.config = config()
-        self.banner = TextBanner(self.text)  # pylint:disable=E1101
 
     def perform(self):
         """Keep sending frames."""
@@ -23,6 +22,5 @@ class Marquee(Performer):
             for index, offset in indeces:
                 pixels = self.banner.carve_slice(index)
                 grid = LightGrid(pixels, offset)
-                grid.map({1: self.colour})  # pylint:disable=E1101
 
                 yield grid
