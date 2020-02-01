@@ -21,3 +21,9 @@ def yeet(yeetee_width, grid_width, enter_from="right"):
             yeets.append((0, index))
 
     return yeets
+
+
+def yeeter(yeetee_width, grid_width, enter_from="right"):
+    """Generator for the above."""
+    for yote in yeet(yeetee_width, grid_width, enter_from):
+        yield yote
