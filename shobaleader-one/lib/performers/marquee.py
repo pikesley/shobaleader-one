@@ -1,3 +1,5 @@
+from time import sleep
+
 from lib.conf import config
 from lib.light_grid import LightGrid
 from lib.performers.performer import Performer
@@ -11,7 +13,7 @@ class Marquee(Performer):
     def __init__(self, **kwargs):
         """Construct."""
         super().__init__(**kwargs)
-        self.defaults = {"colour": [255, 0, 0]}
+        self.defaults = {"colour": [255, 0, 0], "delay": 0.01}
         self.apply_defaults()
         self.config = config()
 
@@ -24,3 +26,4 @@ class Marquee(Performer):
                 grid = LightGrid(pixels, offset)
 
                 yield grid
+                sleep(self.delay)
