@@ -11,11 +11,11 @@ class TextBanner:
         self.text = text
         self.font = pickle.load(open(f"fonts/{font}.pickle", "rb"))
         self.chars = list(self.text)
+        self.grid = self.make_grid()
         self.height = len(self.grid)
         self.width = len(self.grid[0])
 
-    @property
-    def grid(self):
+    def make_grid(self):
         """Turn the text into a grid."""
         grid = []
         for index, _ in enumerate(self.font[self.chars[0]]):
