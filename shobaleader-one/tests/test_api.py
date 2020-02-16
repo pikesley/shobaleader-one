@@ -60,3 +60,14 @@ def test_bad_matrix_data():
     )
     assert response.status_code == 422
     assert response.json == {"error": "Bad data"}
+
+
+def test_get_matrix():
+    """Test it returns the correct `/matrix` data."""
+    app.test_client().post(
+        "/matrix",
+        data=json.dumps({"matrix": [[[0, 255, 0]]]}),
+        content_type="application/json",
+    )
+    response = app.test_client().get("/matrix")
+    assert json.loads(response.data) == {"matrix": [[[0, 255, 0]]]}
