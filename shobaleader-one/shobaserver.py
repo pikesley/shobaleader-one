@@ -1,3 +1,5 @@
+import json
+
 from flask import request
 from flask_api import FlaskAPI
 
@@ -9,7 +11,7 @@ from lib.performers.simple import SimplePerformer
 from lib.shobaleader import Shobaleader
 
 app = FlaskAPI(__name__)
-
+app.matrix_data = {"matrix": [[[0, 0, 0]] * 32] * 8}
 leader = Shobaleader()
 
 performer_lookups = {"dot": Dot, "marquee": Marquee, "simple": SimplePerformer}
@@ -31,14 +33,19 @@ def matrix():
     if not request.content_length:
         return {"error": "No data"}, 422
 
-    data = request.get_json()
-    if not "matrix" in data:
+    app.matrix_data = request.get_json()
+    if not "matrix" in app.matrix_data:
         return {"error": "Bad data"}, 422
 
-    grid = LightGrid(data["matrix"])
+    grid = LightGrid(app.matrix_data["matrix"])
     leader.stop()
     leader.panel.display(grid)
     return {"status": "OK"}
+
+
+@app.route("/matrix", methods=["GET"])
+def get_matrix():
+    return json.dumps(app.matrix_data)
 
 
 if __name__ == "__main__":
