@@ -11,7 +11,7 @@ adafruit-circuitpython-neopixel = "^4.1.0"
 "ruamel.yaml" = "^0.16.6"
 "RPi.GPIO" = {version = "^0.7.0", optional = true}
 rpi_ws281x = {version = "^4.2.3", optional = true}
-flask = "^1.1.1"
+flask = "^2.2.5"
 Flask-API = "^2.0"
 
 [tool.poetry.dev-dependencies]
